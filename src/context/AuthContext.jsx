@@ -7,13 +7,13 @@ const USER_KEY = "sigla_user"
 
 // Demo/mock credentials for exploring the UI without a backend.
 export const DEMO_CREDENTIALS = {
-  email: "admin@sigla.edu",
+  email: "admin@uce.edu.ec",
   password: "demo1234",
 }
 
 const DEMO_USER = {
-  nombre: "Admin",
-  apellido: "Demo",
+  nombre: "Administrador",
+  apellido: "UCE",
   email: DEMO_CREDENTIALS.email,
   rol: "Administrador",
 }

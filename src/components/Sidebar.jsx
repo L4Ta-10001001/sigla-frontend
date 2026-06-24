@@ -44,9 +44,9 @@ export function Sidebar({ open, onNavigate }) {
             <FlaskRound className="h-5 w-5" />
           </div>
           <div className="leading-tight">
-            <p className="text-sm font-bold text-white">SIGLA</p>
+            <p className="text-sm font-bold text-white">SIGLA UCE</p>
             <p className="text-[10px] uppercase tracking-wider text-sidebar-foreground/60">
-              Gestión de Laboratorios
+              Universidad Central del Ecuador
             </p>
           </div>
         </div>

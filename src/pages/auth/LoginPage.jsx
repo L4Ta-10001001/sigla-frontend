@@ -43,7 +43,8 @@ export function LoginPage() {
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg">
             <FlaskRound className="h-7 w-7" />
           </div>
-          <h1 className="mt-4 text-2xl font-bold text-white">SIGLA</h1>
+          <h1 className="mt-4 text-2xl font-bold text-white">SIGLA UCE</h1>
+          <p className="mt-1 text-sm font-medium text-white/90">Universidad Central del Ecuador</p>
           <p className="mt-1 text-sm text-sidebar-foreground/70">
             Sistema Integral de Gestión de Laboratorios Académicos
           </p>
@@ -63,7 +64,7 @@ export function LoginPage() {
                   autoComplete="email"
                   required
                   className="pl-9"
-                  placeholder="admin@universidad.edu"
+                  placeholder="usuario@uce.edu.ec"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -119,7 +120,7 @@ export function LoginPage() {
         </div>
 
         <p className="mt-6 text-center text-xs text-sidebar-foreground/50">
-          © {new Date().getFullYear()} SIGLA — Panel administrativo
+          © {new Date().getFullYear()} Universidad Central del Ecuador — SIGLA
         </p>
       </div>
     </div>

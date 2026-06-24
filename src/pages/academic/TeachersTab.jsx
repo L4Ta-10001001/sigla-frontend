@@ -204,7 +204,7 @@ export function TeachersTab() {
             <Input required placeholder="Nombre completo" value={form.nombre} onChange={(e) => set("nombre", e.target.value)} />
           </Field>
           <Field label="Correo" required>
-            <Input type="email" required placeholder="docente@universidad.edu" value={form.correo} onChange={(e) => set("correo", e.target.value)} />
+            <Input type="email" required placeholder="docente@uce.edu.ec" value={form.correo} onChange={(e) => set("correo", e.target.value)} />
           </Field>
         </form>
 

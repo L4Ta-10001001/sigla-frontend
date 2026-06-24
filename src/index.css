@@ -14,17 +14,17 @@
 
   --color-border: #e2e8f0;
   --color-input: #e2e8f0;
-  --color-ring: #2563eb;
+  --color-ring: #00529b;
 
-  /* Brand / primary */
-  --color-primary: #2563eb;
+  /* Brand / primary — UCE institutional blue */
+  --color-primary: #00529b;
   --color-primary-foreground: #ffffff;
 
-  /* Sidebar (dark navy) */
-  --color-sidebar: #0b1220;
+  /* Sidebar (UCE deep navy blue) */
+  --color-sidebar: #06182f;
   --color-sidebar-foreground: #cbd5e1;
-  --color-sidebar-accent: #1e293b;
-  --color-sidebar-active: #1d4ed8;
+  --color-sidebar-accent: #102a4c;
+  --color-sidebar-active: #00529b;
 
   /* Semantic accents */
   --color-success: #16a34a;
