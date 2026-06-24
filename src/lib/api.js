@@ -1,4 +1,17 @@
+import { mockApiFetch } from "./mockApi"
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api/v1"
+
+/**
+ * DEMO MODE
+ * ─────────
+ * While there is no backend, all requests are served by the in-memory mock in
+ * ./mockApi.js (seeded with UCE data). When your real backend is ready, set
+ * USE_MOCK to false (or define VITE_USE_MOCK="false") to hit the real API.
+ */
+const USE_MOCK = import.meta.env.VITE_USE_MOCK
+  ? import.meta.env.VITE_USE_MOCK !== "false"
+  : true
 
 const TOKEN_KEY = "sigla_token"
 
@@ -23,6 +36,11 @@ export function clearToken() {
  *   { status, error, message, path }
  */
 export async function apiFetch(path, options = {}) {
+  // DEMO MODE: serve everything from the in-memory mock backend.
+  if (USE_MOCK) {
+    return mockApiFetch(path, options)
+  }
+
   const token = getToken()
   const headers = {
     Accept: "application/json",
