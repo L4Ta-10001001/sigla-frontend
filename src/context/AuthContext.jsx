@@ -5,6 +5,19 @@ const AuthContext = createContext(null)
 
 const USER_KEY = "sigla_user"
 
+// Demo/mock credentials for exploring the UI without a backend.
+export const DEMO_CREDENTIALS = {
+  email: "admin@sigla.edu",
+  password: "demo1234",
+}
+
+const DEMO_USER = {
+  nombre: "Admin",
+  apellido: "Demo",
+  email: DEMO_CREDENTIALS.email,
+  rol: "Administrador",
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     try {
@@ -26,6 +39,14 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function login(email, password) {
+    // Demo mode: bypass the backend entirely when demo credentials are used.
+    if (email === DEMO_CREDENTIALS.email && password === DEMO_CREDENTIALS.password) {
+      setToken("demo-token")
+      setUser(DEMO_USER)
+      localStorage.setItem(USER_KEY, JSON.stringify(DEMO_USER))
+      return { user: DEMO_USER, accessToken: "demo-token" }
+    }
+
     const data = await api.post("/auth/login", { email, password })
     if (data?.accessToken) setToken(data.accessToken)
     if (data?.user) {

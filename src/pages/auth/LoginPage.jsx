@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate, Navigate } from "react-router-dom"
 import { FlaskRound, Mail, Lock, AlertCircle } from "lucide-react"
-import { useAuth } from "../../context/AuthContext"
+import { useAuth, DEMO_CREDENTIALS } from "../../context/AuthContext"
 import { Button } from "../../components/Button"
 import { Field, Input } from "../../components/Field"
 
@@ -14,6 +14,12 @@ export function LoginPage() {
   const [loading, setLoading] = useState(false)
 
   if (isAuthenticated) return <Navigate to="/dashboard" replace />
+
+  function fillDemo() {
+    setError("")
+    setEmail(DEMO_CREDENTIALS.email)
+    setPassword(DEMO_CREDENTIALS.password)
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -91,6 +97,25 @@ export function LoginPage() {
               Iniciar sesión
             </Button>
           </form>
+
+          <div className="mt-6 rounded-lg border border-border bg-muted/40 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Acceso de demostración
+            </p>
+            <p className="mt-2 text-sm text-card-foreground">
+              Correo: <span className="font-mono">{DEMO_CREDENTIALS.email}</span>
+            </p>
+            <p className="text-sm text-card-foreground">
+              Contraseña: <span className="font-mono">{DEMO_CREDENTIALS.password}</span>
+            </p>
+            <button
+              type="button"
+              onClick={fillDemo}
+              className="mt-3 text-sm font-medium text-primary underline-offset-2 hover:underline"
+            >
+              Rellenar credenciales de demo
+            </button>
+          </div>
         </div>
 
         <p className="mt-6 text-center text-xs text-sidebar-foreground/50">
