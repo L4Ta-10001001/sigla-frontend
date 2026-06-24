@@ -76,10 +76,10 @@ export function Topbar({ onMenuClick }) {
             </span>
             <span className="hidden text-left sm:block">
               <span className="block text-sm font-medium leading-tight text-foreground">
-                {user ? `${user.name} ${user.lastname}` : "Usuario"}
+                {displayName}
               </span>
               <span className="block text-[11px] leading-tight text-muted-foreground">
-                {user?.role || ""}
+                {role}
               </span>
             </span>
             <ChevronDown className="hidden h-4 w-4 text-muted-foreground sm:block" />
