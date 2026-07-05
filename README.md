@@ -1,33 +1,79 @@
-# sigla-frontend
+# SIGLA Frontend
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+**S**istema de **I**nformación para la **G**estión de **L**aboratorios **A**cadémicos — Universidad Central del Ecuador.
 
-## Built with v0
+Aplicación SPA para administrar laboratorios, horarios base, sesiones, docentes, materias y la estructura académica de la UCE.
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+## Stack
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_qFYSRMehayQpmrX29RYsMwaqNooz)
+| Capa | Tecnología |
+|---|---|
+| Framework | React 18 |
+| Build | Vite 6 |
+| Ruteo | React Router DOM v6 |
+| Estilos | Tailwind CSS v4 (CSS-based config via `@theme`) |
+| Iconos | Lucide React |
+| Package manager | pnpm |
 
-## Getting Started
-
-First, run the development server:
+## Comenzar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:5173](http://localhost:5173) (Vite asigna ese puerto por defecto).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo
 
-## Learn More
+La app incluye un **mock backend en memoria** (~400 líneas en `src/lib/mockApi.js`) que permite probar todas las funcionalidades sin un backend real — activo por defecto.
 
-To learn more, take a look at the following resources:
+Credenciales de demostración:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+```
+Email:      admin@uce.edu.ec
+Contraseña: demo1234
+```
+
+Para resetear los datos seed desde la consola del navegador:
+
+```js
+window.__siglaResetMock()
+```
+
+### Backend real
+
+Si tenés el backend corriendo, desactivá el mock:
+
+```bash
+VITE_USE_MOCK=false pnpm dev
+```
+
+La URL base del API se configura con `VITE_API_BASE_URL` (default `http://localhost:8080/api/v1`).
+
+## Scripts
+
+| Comando | Descripción |
+|---|---|
+| `pnpm dev` | Servidor de desarrollo (Vite) |
+| `pnpm build` | Build de producción |
+| `pnpm preview` | Preview del build |
+
+## Estructura
+
+```
+src/
+├── components/     # 15 componentes UI reusables
+├── context/        # AuthContext, PeriodContext, ToastContext
+├── lib/            # api.js, mockApi.js, useAsync, utils, catalogs
+├── pages/          # Login, Dashboard, Academic, Laboratories, Scheduling, Sessions
+└── routes/         # AppRouter, ProtectedRoute
+```
+
+## Funcionalidades
+
+- **Dashboard** — KPIs de laboratorios, sesiones del día, ocupación por laboratorio.
+- **Gestión Académica** — CRUD de periodos, facultades, carreras, materias y docentes con asignación de materias.
+- **Laboratorios** — CRUD con filtros por tipo y estado.
+- **Horario Base** — Grilla semanal (lunes a sábado, 07–22h) con slots editables.
+- **Sesiones** — Generación desde horario base, control de inicio/fin, registro de asistencia de docentes.
